@@ -46,8 +46,10 @@ Asegúrate de tener instalado Python y las siguientes dependencias. También nec
 
 ## Uso
 
-1. **Ejecuta el script para obtener y analizar reseñas:**
+1. **Ejecuta el script para obtener y analizar reseñas:**  
 
+   *Este paso es opcional, ya que la base de datos ya contiene datos para los tres vehículos listados. Ejecutar el script actualizaría las imágenes a una calidad baja debido a que las imágenes se obtienen de Google Imágenes.*
+   
     Ejecuta el script de scraping y análisis utilizando el comando de Django `manage.py`:
 
     ```bash
