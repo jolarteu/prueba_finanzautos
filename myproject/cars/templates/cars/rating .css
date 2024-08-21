@@ -1,0 +1,6 @@
+rating .partial {
+            width: 50%;
+            overflow: hidden;
+            display: inline-block;
+            color: #6f42c1;
+            position: relative;

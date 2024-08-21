@@ -1,0 +1,143 @@
+/* static/css/styles.css */
+/* static/css/styles.css */
+
+
+        body {
+            padding-top: 50px; /* Ajusta este valor según la altura del header */
+            padding-bottom: 20px; /* Ajusta este valor según la altura del footer */
+        }
+        header {
+            background-color: #1c3d49;
+            padding: 0; /* Elimina padding para reducir la altura */
+            height: 60px; /* Ajusta la altura del header según tus necesidades */
+        }
+        
+        header .container {
+            padding-left: 15px; /* Margen izquierdo del contenedor */
+            padding-right: 0; /* Elimina padding derecho del contenedor */
+            max-width: 100%; /* Asegura que el contenedor ocupe el ancho completo */
+            height: 100%; /* Asegura que el contenedor ocupe la altura del header */
+            display: flex;
+            align-items: center; /* Centra verticalmente el contenido */
+        }
+        
+        header h1 {
+            color: #ffffff;
+            margin: 0; /* Elimina margen del título */
+            padding: 0; /* Elimina padding del título */
+            font-size: 24px; /* Ajusta el tamaño del texto según sea necesario */
+        }
+        header h1 span {
+            color: #ffffff; /* Color blanco para el primer span */
+        }
+        header h1 span:last-child {
+            color: #00bfa6; /* Color verde para el segundo span */
+        }
+        .card-img-top {
+            height: 250px; /* Ajusta la altura deseada para las imágenes */
+            object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionar */
+        }
+        .card {
+            display: flex;
+            flex-direction: column;
+        }
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .card-summary-wrapper {
+            position: relative;
+        }
+        .card-summary {
+            /* justificar el texto */
+            text-align: justify;
+            max-height: 350px; /* Altura fija para el resumen */
+            overflow: hidden; /* Oculta el contenido que excede la altura */
+            transition: max-height 0.3s ease-out; /* Transición suave para la expansión */
+        }
+        .card-summary.expanded {
+            max-height: none; /* Permite el crecimiento del contenido cuando está expandido */
+        }
+        .summary-toggle {
+            position: absolute;
+            bottom: 0;
+            width: 100%; /* Asegura que el botón ocupe todo el ancho del contenedor */
+            background-color: rgba(0, 0, 0, 0.1); /* Fondo semitransparente */
+            color: #fff;
+            padding: 5px;
+            text-align: center; /* Centra el texto del botón */
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s; /* Transición suave para el color de fondo */
+        }
+        .summary-toggle:hover {
+            background-color: rgba(0, 0, 0, 0.7); /* Cambio de color al pasar el ratón */
+        }
+        .card-separator {
+            border-bottom: 1px solid #ddd; /* Línea suave */
+            margin: 15px 0;
+        }
+        .comments-section {
+            cursor: pointer;
+            background-color: #f8f9fa; /* Fondo sombreado */
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-weight: bold; /* Texto en negrilla */
+            text-align: center; /* Texto centrado */
+        }
+        .comments-section:hover {
+            background-color: #e9ecef; /* Color más oscuro al pasar el ratón */
+        }
+        .collapse {
+            padding-top: 10px;
+        }
+        .text-justify {
+            text-align: justify;
+        }
+        .comments-list {
+            list-style-type: none; /* Eliminar viñetas predeterminadas */
+            padding-left: 0; /* Eliminar sangría de la lista */
+        }
+        .comments-list li {
+            position: relative;
+            margin-bottom: 20px; /* Espacio entre comentarios */
+            padding-left: 40px; /* Espacio para la viñeta */
+        }
+        .comments-list li::before {
+            content: "";
+            position: absolute;
+            left: 10px; /* Posición horizontal de la viñeta */
+            top: 0; /* Alineación con la primera línea del comentario */
+            width: 10px; /* Tamaño de la viñeta */
+            height: 10px; /* Tamaño de la viñeta */
+            border-radius: 50%; /* Forma circular */
+            background-color: #6f42c1; /* Color de la viñeta */
+        }
+        .footer {
+            background-color: rgba(108, 117, 125, 0.8); /* Fondo gris con transparencia */
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            left: 0;
+            text-align: center;
+        }
+        .rating-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .card-rating {
+            font-size: 24px;
+            margin: 0;
+            line-height: 1; 
+            display: inline-block;
+        }
+        .rating-star {
+            color: gold;    <link href="{% static 'css/styles.css' %}" rel="stylesheet"> <!-- Enlace al archivo CSS -->
+            font-size: 24px;
+            margin-left: 4px;
+            line-height: 1; 
+            display: inline-block;
+        }
