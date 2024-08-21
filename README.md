@@ -11,8 +11,8 @@ Este proyecto realiza scraping de reseñas de vehículos y utiliza técnicas de 
 - **numpy**: Librería para operaciones numéricas.
 - **requests**: Librería para hacer solicitudes HTTP.
 - **BeautifulSoup**: Librería para el análisis de HTML y scraping.
-- **langchain_community**: Librería para procesamiento de lenguaje natural y generación de resúmenes.
-- **Ollama**: Modelo de lenguaje para generar resúmenes de texto.
+- **langchain_community**: Librería para procesamiento de lenguaje natural y generación de PROMPTS.
+- **Ollama**: Servidor de modelos de lenguaje para generar resúmenes de texto.
 
 ## Requisitos
 
@@ -54,7 +54,16 @@ Asegúrate de tener instalado Python y las siguientes dependencias. También nec
     python manage.py update_vehicle_data
     ```
 
-   Este comando ejecutará el script ubicado en `myproject/cars/utils/reviews.py`, que se encarga de realizar el scraping de reseñas y generar resúmenes.
+    el codigo de update_vehicle_data esta en myproject/cars/management/commands/update_vehicle_data.py
+
+    Dentro del codigo esta la lista de vehiculos a buscar, vehicles = [
+            ('chevrolet', 'sail'),
+            ('Volkswagen', 'Gol'),
+            ('Toyota', 'Hilux')
+        ]
+    Puede ampliar esta lista pero las imagenes se descargaran en baja resolución ya que la funcion las saca de google imagenes.
+
+   El anterior archivo ejecutara internamente el archivo  `myproject/cars/utils/reviews.py`, que se encarga de realizar el scraping de reseñas y generar resúmenes con IA.
 
 2. **Configura las variables necesarias (si es necesario):**
    - Asegúrate de que las URLs y las configuraciones específicas del proyecto estén ajustadas en el código según tus necesidades.
@@ -63,10 +72,19 @@ Asegúrate de tener instalado Python y las siguientes dependencias. También nec
 
 - `myproject/cars/utils/reviews.py`: El script para realizar el scraping y análisis.
 - `requirements.txt`: Lista de dependencias del proyecto.
-- `media/`: Carpeta para almacenar imágenes (si corresponde).
-- `static/`: Carpeta para almacenar archivos estáticos (si corresponde).
 
 ## Técnicas de Inteligencia Artificial Utilizadas
 
-- **Generación de Resúmenes**: Utiliza el modelo de lenguaje Ollama para analizar y resumir los comentarios de los usuarios. El modelo genera un resumen coherente de las reseñas, destacando los puntos clave y las opiniones más frecuentes.
+    Modelos de Lenguaje Grande (LLMs): El proyecto emplea Ollama, un servidor local que ejecuta el modelo de lenguaje Llama3. Los LLMs son modelos avanzados de inteligencia artificial diseñados para entender y generar texto en lenguaje natural. Llama3 es capaz de captar contextos complejos y generar texto coherente y relevante a partir de grandes volúmenes de datos textuales.
 
+    Generación de Resúmenes: Utilizamos Ollama para analizar y resumir los comentarios extraídos durante el scraping. Este proceso se basa en las capacidades de Llama3 para sintetizar información y generar resúmenes precisos. La generación de resúmenes en el proyecto incluye:
+        Definición del Prompt: Usamos la librería langchain_community para construir un prompt que guía al modelo en la generación del resumen. ChatPromptTemplate se utiliza para estructurar el texto que se envía al modelo, especificando cómo deben ser formateados los comentarios y cómo debe ser el resumen.
+        Interacción con el Modelo: El prompt se envía a Ollama, que ejecuta Llama3 para procesar el texto y generar un resumen coherente. La salida del modelo destaca los puntos clave y las opiniones más frecuentes, ofreciendo un resumen entre 150 y 200 palabras.
+        Post-Procesamiento: El texto generado se ajusta y formatea para integrarse en el DataFrame final que se presenta en el análisis de resultados.
+
+    Librerías Utilizadas:
+        langchain_community: Proporciona herramientas para crear y manejar prompts y salidas generadas por modelos de lenguaje. Utilizamos esta librería para definir la estructura de los prompts (ChatPromptTemplate) y para interpretar la salida del modelo (StrOutputParser).
+        ChatPromptTemplate: Permite definir la estructura y el formato del texto que se envía al modelo de lenguaje. Esto asegura que el modelo reciba las instrucciones precisas para generar el resumen deseado.
+        StrOutputParser: Se encarga de formatear la salida generada por el modelo, adaptándola al formato requerido para su inclusión en el DataFrame de resultados.
+
+Esta combinación de Ollama y langchain_community permite realizar un análisis detallado y automatizado de las reseñas de vehículos, aprovechando el poder de Llama3 para obtener resúmenes precisos y útiles a partir de los comentarios de los usuarios.
