@@ -65,7 +65,27 @@ Asegúrate de tener instalado Python y las siguientes dependencias. También nec
 
    El anterior archivo ejecutara internamente el archivo  `myproject/cars/utils/reviews.py`, que se encarga de realizar el scraping de reseñas y generar resúmenes con IA.
 
-2. **Configura las variables necesarias (si es necesario):**
+2. **Inicia el servidor Django y accede a la URL de las reseñas:**
+
+    Inicia el servidor de desarrollo de Django con el siguiente comando:
+
+    ```bash
+    python manage.py runserver
+    ```
+
+    Una vez que el servidor esté en ejecución, abre tu navegador web y accede a la siguiente URL para ver las reseñas de los vehículos:
+
+    ```
+    http://localhost:8000/cars
+    ```
+
+    ## Captura de Pantalla
+
+    Aquí tienes una vista previa de la interfaz de usuario:
+
+    ![Descripción de la imagen](home.png)
+
+3. **Configura las variables necesarias (si es necesario):**
    - Asegúrate de que las URLs y las configuraciones específicas del proyecto estén ajustadas en el código según tus necesidades.
 
 ## Estructura del Proyecto
